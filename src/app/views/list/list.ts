@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Entree } from './entree/entree';
 
+import { Entree } from './entree/entree';
 
 @Component({
   imports: [Entree],
