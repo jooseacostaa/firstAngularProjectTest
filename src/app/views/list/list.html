@@ -1,4 +1,11 @@
 <div id="list">
-    <h3> Listado de entradas a esta web: </h3>
-    <app-entree> </app-entree>
+
+    <h3>Listado de entradas a la web:</h3>
+
+    @for (entreeAqui of entryList; track entreeAqui.title) {
+
+    <app-entree [entreeItem]="entreeAqui"></app-entree>
+
+    }
+
 </div>
