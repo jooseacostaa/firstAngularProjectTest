@@ -27,4 +27,8 @@ export class List {
     }
   ]
 
+  public showTitle(title: string): void {
+    alert('Entrada seleccionada: ${title}');
+  }
+
 }
