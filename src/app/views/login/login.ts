@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { User } from '../../shared/classes/user';
+import { Logan } from '../../shared/services/logan';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +12,22 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.css',
 })
 export class Login {
-  user = {
-    name: '',
-    password: ''
-  };
+  private loganService = inject(Logan);
+  private router = inject(Router);
 
-  submit() {
-    console.log('Datos del formulario:', this.user);
+  public user: User = new User();
+
+  public submit(): void {
+    this.loganService.logan(this.user).subscribe({
+      next: (data: number) => {
+        localStorage.setItem('userName', this.user.name);
+        localStorage.setItem('personalToken', `${data}`);
+
+        this.router.navigate(['/list']);
+      },
+      error: (error: Error) => {
+        console.error('Error al realizar el acceso:', error);
+      }
+    });
   }
 }

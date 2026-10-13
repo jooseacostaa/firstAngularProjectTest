@@ -1,5 +1,13 @@
 <ul id="menu">
-    <li><span></span></li>
+    <li>
+        @if (userName) {
+        <span>Hola, {{ userName }}</span>
+        <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
+        } @else {
+        <a routerLink="/login">Acceso</a>
+        }
+    </li>
+
     <li>
         <a routerLink="/list">Mi Web</a>
     </li>
@@ -7,6 +15,6 @@
     <li>&nbsp;/ &nbsp;</li>
 
     <li>
-        <a routerLink="/us">Acerda de</a>
+        <a routerLink="/us">Acerca de</a>
     </li>
 </ul>

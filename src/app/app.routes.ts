@@ -16,6 +16,10 @@ export const routes: Routes = [
         component: AcercaDeNosotros
     },
     {
+        path: 'login',
+        component: Login
+    },
+    {
         path: '',
         redirectTo: '/list',
         pathMatch: 'full'
@@ -23,10 +27,6 @@ export const routes: Routes = [
     {
         path: '**',
         component: PaginaNoEncontrada
-    },
-    {
-        path: 'login',
-        component: Login
     }
 
 ];

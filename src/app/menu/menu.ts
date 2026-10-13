@@ -7,4 +7,16 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './menu.css',
   templateUrl: './menu.html',
 })
-export class Menu { }
+export class Menu {
+  public userName = localStorage.getItem('userName');
+
+  constructor(private router: Router) { }
+
+  public logout(): void {
+    localStorage.removeItem('userName');
+    localStorage.removeItem('personalToken');
+
+    this.userName = null;
+    this.router.navigate(['/login']);
+  }
+}
